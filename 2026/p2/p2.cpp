@@ -73,14 +73,10 @@ void binary_search_descending(int arr[], int l, int r, int key, int step) {
 
   if (arr[m] < key) {
     cout << "< " << key << "\n";
-    r = m - 1;
-    step += 1;
-    binary_search_descending(arr, l, r, key, step);
+    binary_search_descending(arr, l, m-1, key, step+1);
   } else if (arr[m] > key) {
     cout << "> " << key << "\n";
-    l = m + 1;
-    step += 1;
-    binary_search_descending(arr, l, r, key, step);
+    binary_search_descending(arr, m+1, r, key, step+1);
   } else {
     cout << "= " << key << "\n";
   }
@@ -117,6 +113,7 @@ int main() {
   counter++;
 
   int status = check_arr(arr, counter);
+  cout << "status: " << status << "\n";
   if (status == 0) {
     cout << "Error! The array is not sorted." << "\n";
     return 0;
